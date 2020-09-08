@@ -5,6 +5,7 @@ description: Learn about gRPC services with Kestrel server and the ASP.NET Core 
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/20/2019
+no-loc: ["ASP.NET Core Identity", cookie, Cookie, Blazor, "Blazor Server", "Blazor WebAssembly", "Identity", "Let's Encrypt", Razor, SignalR]
 uid: grpc/index
 ---
 # Introduction to gRPC on .NET Core
@@ -14,7 +15,7 @@ By [John Luo](https://github.com/juntaoluo) and [James Newton-King](https://twit
 [gRPC](https://grpc.io/docs/guides/) is a language agnostic, high-performance Remote Procedure Call (RPC) framework.
 
 The main benefits of gRPC are:
-* Modern high-performance lightweight RPC framework.
+* Modern, high-performance, lightweight RPC framework.
 * Contract-first API development, using Protocol Buffers by default, allowing for language agnostic implementations.
 * Tooling available for many languages to generate strongly-typed servers and clients.
 * Supports client, server, and bi-directional streaming calls.
@@ -24,6 +25,8 @@ These benefits make gRPC ideal for:
 * Lightweight microservices where efficiency is critical.
 * Polyglot systems where multiple languages are required for development.
 * Point-to-point real-time services that need to handle streaming requests or responses.
+
+[!INCLUDE[](~/includes/gRPCazure.md)]
 
 ## C# Tooling support for .proto files
 
@@ -105,7 +108,7 @@ gRPC clients are concrete client types that are [generated from *\*.proto* files
 var channel = GrpcChannel.ForAddress("https://localhost:5001");
 var client = new Greeter.GreeterClient(channel);
 
-var response = await client.SayHello(
+var response = await client.SayHelloAsync(
     new HelloRequest { Name = "World" });
 
 Console.WriteLine(response.Message);
